@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MMD AR</title>
+    <meta name="description" content="A-Frame AR miku miku dance">
+    <script src="./aframe-master.min.js"></script>
+    <script src="./aframe-environment-component.min.js"></script>
+    <script src="./aframe-animation-component.min.js"></script>
+    <script src="./a-mmd.min.js"></script>
+    <script src="./a-ar.min.js"></script>
+    <script src="./util.js"></script>
+</head>
+
+<body>
+    <a-scene ar light="defaultLightsEnabled: false" plane-detector='container:#container' event-proxy='events:on-plane;target:#mmd-box'>
+        <a-camera id='camera' look-controls>
+            <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .plane"></a-entity>
+            <a-circle id='loader' position="0 0 -1" color="#CCC" radius="0.01" visible='false' animation__visible_start='property:visible; from:false; to:true; delay:0; dur:0;startEvents:load-start;'
+                animation__geometry_start='property:geometry.radius; from:0.01; to:0.02;dur:500;dir: alternate;loop: true;startEvents:load-start;pauseEvents:load-finish,load-fail;'
+                animation__opacity_start='property:material.opacity; from:0; to:1; dur:100;startEvents:load-start;' animation__visible_stop='property:visible; from:true; to:false; delay:100; dur:0;startEvents:load-finish,load-fail;'
+                animation__opacity_stop='property:material.opacity; to:0; dur:100;startEvents:load-finish,load-fail;'></a-circle>
+        </a-camera>
+        <a-entity id='container'>
+        </a-entity>
+        <a-entity id='mmd-box' on-plane visible='false' position="0 1.5 -5" geometry="primitive: sphere; radius: 1.5" material="color:#FFF;opacity:0"
+            event-proxy='events:on-plane;map:start;target:#mmd' animation__visible='property:visible; from:false; to:true; delay:10; dur:0;startEvents:on-plane;'>
+            <a-entity id='mmd' event-proxy="events:load-start,load-finish,load-fail;target:#loader" mmd="audio:./mmd/miku/mmd.mp3; model:./mmd/miku/mmd.pmx; motion:./mmd/miku/mmd.vmd;physics:true;listener:#camera">
+            </a-entity>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>

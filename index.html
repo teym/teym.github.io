@@ -17,11 +17,8 @@
         <a-entity environment="preset: forest">
             <a-entity position="0 0.75 0">
                 <a-camera id='camera' look-controls wasd-controls="fly:true">
-                    <a-circle id='loader' position="0 0 -1" color="#CCC" radius="0.01" animation__geometry_start='property:geometry.radius; from:0.01; to:0.02;dur:500;dir: alternate;loop: true;startEvents:load-start;pauseEvents:load-finish,load-fail;'
+                    <a-circle id='loader' position="0 0 -1" color="#CCC" radius="0.01" animation__geometry_start='property:geometry.radius; from:0.01; to:0.03;dur:500;dir: alternate;loop: true;startEvents:load-start;pauseEvents:load-finish,load-fail;'
                         animation__opacity_start='property:material.opacity; from:0; to:1; dur:100;startEvents:load-start;' animation__opacity_stop='property:material.opacity; to:0; dur:100;startEvents:load-finish,load-fail;'></a-circle>
-                    <!-- <a-entity position="0 0 -1" geometry='primitive: ring; radiusInner:0.0001; radiusOuter:0.025' material='color: blue; shader: flat; opacity:1;'
-                        animation__inner='property:geometry.radiusInner; from:0.0001; to:0.025;dur:500;dir: alternate;loop: true'
-                        animation__outer='property:geometry.radiusOuter; from:0.025; to:0.05;dur:500;dir: alternate;loop: true'></a-entity> -->
                 </a-camera>
             </a-entity>
             <a-entity id='mmd-container' position="0 1.5 -4" geometry="primitive: sphere; radius: 1.5" material="color:#FFF;opacity:0">
